@@ -1,0 +1,53 @@
+<div class="p-6 bg-white rounded-xl shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Course Selection of All Students</h2>
+
+  <!-- Öğrenci filtreleme -->
+  <div class="mb-4 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+    <label class="font-medium text-gray-700">Filter by student:</label>
+    <select
+      [(ngModel)]="selectedStudent"
+      (change)="filterByStudent(selectedStudent)"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+    >
+      <option value="">All</option>
+      <option *ngFor="let email of studentEmails" [value]="email">{{ email }}</option>
+    </select>
+  </div>
+
+  <!-- Ders listesi -->
+  <div class="overflow-x-auto max-h-96 border rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
+      <thead class="bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+        <tr>
+          <th class="px-4 py-2">Student</th>
+          <th class="px-4 py-2">Course Name</th>
+          <th class="px-4 py-2">Day</th>
+          <th class="px-4 py-2">Time</th>
+          <th class="px-4 py-2">Status</th>
+          <th class="px-4 py-2">Progress</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr *ngFor="let course of filteredCourses" class="hover:bg-gray-50 transition">
+          <td class="px-4 py-2">{{ course.studentEmail }}</td>
+          <td class="px-4 py-2">{{ course.name }}</td>
+          <td class="px-4 py-2">{{ course.day }}</td>
+          <td class="px-4 py-2">{{ course.time }}</td>
+          <td class="px-4 py-2">
+            <span [ngClass]="course.approved ? 'text-green-600 font-semibold' : 'text-yellow-600 font-semibold'">
+              {{ course.approved ? 'Onaylı' : 'Beklemede' }}
+            </span>
+          </td>
+          <td class="px-4 py-2">
+            <button 
+              class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              [disabled]="course.approved"
+              (click)="approveCourse(course)">
+              Approve
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

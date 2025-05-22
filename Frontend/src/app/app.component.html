@@ -1,0 +1,13 @@
+<!-- <ul>
+  <li>Student</li>
+  <li>Teacher</li>
+  <li>Administer</li>
+</ul> -->
+
+<div *ngIf="isLoggedIn()">
+  <app-dashboard></app-dashboard>
+</div>
+
+<div *ngIf="!isLoggedIn()">
+  <router-outlet></router-outlet>
+</div>

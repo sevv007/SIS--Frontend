@@ -1,0 +1,38 @@
+<div class="dashboard-container flex">
+<div class="flex-1 p-6 ml-30">
+    <h2 class="text-2xl font-bold">Current Information</h2>
+    <div class="grid grid-cols-2 gap-4 mt-4">
+        <div class="p-4 bg-white shadow rounded-lg">
+            <h3 class="font-bold">Student Name</h3>
+            <p>{{ user?.name }}</p>
+          </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">GPA</h3>
+        <p>{{ user?.gpa }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Counselor Instructor</h3>
+        <p>{{ user?.Counselor }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Section</h3>
+        <p>{{ user?.department }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Email</h3>
+        <p>{{ user?.email }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Phone</h3>
+        <p>{{ user?.phone }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Faculty</h3>
+        <p>{{ user?.studentfaculty }}</p>
+      </div>
+      <div class="p-4 bg-white shadow rounded-lg">
+        <h3 class="font-bold">Student Status</h3>
+        <p>Full-time student</p>
+      </div>
+    </div>
+</div>

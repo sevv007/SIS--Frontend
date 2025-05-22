@@ -1,0 +1,39 @@
+<div class="p-5 bg-white shadow rounded-lg">
+    <h2 class="text-xl font-semibold mb-4">Courses Awaiting Approval</h2>
+    <table class="w-full border-collapse border border-gray-300">
+      <thead class="bg-orange-500 text-white">
+        <tr>
+          <th class="border p-2">Lecture</th>
+          <th class="border p-2">Approve</th>
+          <th class="border p-2">Time</th>
+          <th class="border p-2">Day</th>
+          <th class="border p-2">Grade</th>
+          <th class="border p-2">Credit</th>
+          <th class="border p-2">Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of selectedCourses" class="text-center">
+          <td class="border p-2">{{ course.name }}</td>
+          <td class="border p-2">{{ course.approved ? 'Approved' : 'Waiting' }}</td>
+          <td class="border p-2">{{course.day}}</td>
+          <td class="border p-2">{{course.time}}</td>
+          <td class="border p-2">
+            <input [(ngModel)]="course.note" (change)="updateNote(course, course.note)" class="border px-2 py-1 rounded w-20 text-center" />
+          </td>
+          <td class="border p-2">
+            <button 
+              (click)="approveCourse(course)" 
+              [disabled]="course.approved"
+              class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">
+              Approve
+            </button>
+          </td>
+          <td class="border border-gray-300 p-2">
+            <button (click)="deleteCourse(course)" class="bg-red-500 text-white px-3 py-1 rounded shadow-md hover:bg-red-600 transition">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

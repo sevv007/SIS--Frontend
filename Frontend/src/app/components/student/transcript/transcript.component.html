@@ -1,0 +1,24 @@
+<div class="p-6 bg-white shadow rounded-lg">
+    <h2 class="text-2xl font-bold mb-4">Transcript</h2>
+  
+    <table class="w-full border-collapse border border-gray-300 mb-4">
+      <thead>
+        <tr class="bg-orange-500 text-white">
+          <th class="border border-gray-300 p-2">Lecture Name</th>
+          <th class="border border-gray-300 p-2">Credit</th>
+          <th class="border border-gray-300 p-2">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of completedCourses">
+          <td class="border border-gray-300 p-2">{{ course.name }}</td>
+          <td class="border border-gray-300 p-2">{{ course.credit || 3 }}</td>
+          <td class="border border-gray-300 p-2">{{ course.note }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="text-right font-semibold text-lg">
+      Total GANO: <span class="text-indigo-600">{{ totalGano }}</span>
+    </div>
+  </div>

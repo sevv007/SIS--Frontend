@@ -1,0 +1,146 @@
+<!-- <div class="flex h-screen bg-gray-100"> -->
+  <!-- Sidebar -->
+  <!-- <div class="w-64 bg-blue-800 text-white flex flex-col p-4">
+    <div class="flex items-center justify-center mb-6">
+      <img src="assets/logo.png" alt="Logo" class="w-12 h-12 rounded-full">
+    </div>
+    
+    <nav class="flex-1">
+      <ul>
+        <li class="mb-4 flex items-center space-x-2">
+          <span>🏠</span>
+          <a href="#" class="hover:text-gray-300">Ana Sayfa</a>
+        </li>
+        <li class="mb-4 flex items-center space-x-2">
+          <span>👤</span>
+          <a href="#" class="hover:text-gray-300">Öğrenci Profili</a>
+        </li>
+        <li class="mb-4 flex items-center space-x-2">
+          <span>📖</span>
+          <a href="#" class="hover:text-gray-300">Ders & Not Takibi</a>
+        </li>
+        <li class="mb-4 flex items-center space-x-2">
+          <span>🎓</span>
+          <a href="#" class="hover:text-gray-300">Transkript Bilgileri</a>
+        </li>
+        <li class="mb-4 flex items-center space-x-2">
+          <span>📅</span>
+          <a href="#" class="hover:text-gray-300">Ders Programı</a>
+        </li>
+        <li class="mb-6 flex items-center space-x-2">
+          <span>📢</span>
+          <a href="#" class="hover:text-gray-300">Duyurular</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button (click)="logout()" class="w-full bg-red-600 py-2 rounded-lg hover:bg-red-700 transition">
+      Çıkış Yap
+    </button>
+  </div> -->
+
+  <!-- Main Content -->
+  <!-- <div class="flex-1 p-6">
+    <h2 class="text-3xl font-semibold mb-6">OBS Paneli</h2>
+     -->
+    <!-- Role-based Content -->
+    <!-- <div *ngIf="userRole === 'student'" class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-2">Öğrenci Paneli</h3>
+      <p>Öğrenciye özel içerikler burada.</p>
+    </div>
+
+    <div *ngIf="userRole === 'teacher'" class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-2">Öğretmen Paneli</h3>
+      <p>Öğretmene özel içerikler burada.</p>
+    </div>
+
+    <div *ngIf="userRole === 'admin'" class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-2">İdareci Paneli</h3>
+      <p>İdarecinin yönetim içerikleri burada.</p>
+    </div>
+  </div>
+</div> -->
+
+<div class="dashboard-container flex">
+  <!-- Sidebar - Moved to the left -->
+  <div class="w-60 bg-yellow-500 text-white p-4 min-h-screen flex flex-col absolute left-0 top-0 h-full">
+    <div class="flex justify-center mb-4">
+      <a href="https://hizliresim.com/bdlhb8h"><img src="https://i.hizliresim.com/bdlhb8h.png" alt="Resim Yükle" class="w-20 h-20 object-contain"></a>
+  </div>
+    <h2 class="text-xl font-bold mb-4 text-center">SIS Panel</h2>
+    <ul>
+      <ng-container *ngIf="userRole === 'student'">
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+          <!-- <a routerLink="/student-dashboard/profile">Öğrenci Profili</a> -->
+          <button (click)="goToprofile()">Student profile</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+           <!-- <a routerLink="/student-dashboard/courses">Ders & Not Takibi</a> -->
+          <button (click)="goToCourses()">Lecture</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+          <!-- <a routerLink="/student-dashboard/transcript">Transkript Bilgileri</a> -->
+          <button (click)="goTotranscript()">Transcript Information</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+          <!-- <a routerLink="/student-dashboard/schedule">Ders Programı</a> -->
+          <button (click)="goToschedule()">Course Program</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+          <!-- <a routerLink="/student-dashboard/schedule">Ders Programı</a> -->
+          <button (click)="goToannouncements()">Announcements</button>
+        </li>
+      </ng-container>
+    
+      <ng-container *ngIf="userRole === 'teacher'">
+        <li class="p-2 hover:bg-orange-500  cursor-pointer text-center">
+          <!-- <a routerLink="/teacher">Öğretmen Paneli</a> -->
+          <button (click)="goToTecprofile()">Teacher Profile</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500  cursor-pointer text-center">
+          <!-- <a routerLink="/teacher/classes">Ders Yönetimi</a> -->
+          <button (click)="goToTecclasses()">Teacher Panel</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer text-center">
+          <!-- <a routerLink="/teacher/announcements">Duyurular</a> -->
+          <button (click)="goToTecannouncements()">Announcements</button>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="userRole === 'admin'">
+        <li class="p-2 hover:bg-orange-500  cursor-pointer text-center">
+          <!-- <a routerLink="/admin">İdareci Paneli</a> -->
+          <button (click)="goToadminProfile()">Admin Profile</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500  cursor-pointer">
+          <!-- <a routerLink="/admin/teachers">Öğretmen Yönetimi</a> -->
+          <button (click)=" goToadminteachers()">Teacher Panel</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500 cursor-pointer">
+          <!-- <a routerLink="/admin/admannouncements">Duyurular</a> -->
+          <button (click)=" goToadminclassSchedule()">Class Schedule</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500  cursor-pointer text-center">
+          <!-- <a routerLink="/admin/students">Öğrenci Yönetimi</a> -->
+          <button (click)=" goToadminstudents()">Student Panel</button>
+        </li>
+        <li class="p-2 hover:bg-orange-500  cursor-pointer text-center">
+          <!-- <a routerLink="/admin/students">Öğrenci Yönetimi</a> -->
+          <button (click)=" goToadminregistration()">Registration</button>
+        </li>
+        
+        <li class="p-2 hover:bg-orange-500 cursor-pointer">
+          <!-- <a routerLink="/admin/admannouncements">Duyurular</a> -->
+          <button (click)=" goToadminannouncements()">Announcements</button>
+        </li>
+      </ng-container>
+
+      <li>
+        <button (click)="logout()" class="w-full mt-4 p-2 bg-blue-600 rounded">Sign Out</button>
+      </li>
+    </ul>
+  </div>
+    <router-outlet></router-outlet>
+</div>
+
+

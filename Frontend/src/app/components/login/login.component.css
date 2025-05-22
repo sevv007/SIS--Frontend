@@ -1,0 +1,64 @@
+/* Genel stil */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .login-form button {
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background: #0056b3;
+  }
+  
+  /* Kullanıcı Tipi Seçimi */
+  .user-type {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+  }
+  
+  .user-type label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .user-type input {
+    margin-right: 5px;
+  }
+  

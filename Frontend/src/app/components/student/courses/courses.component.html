@@ -1,0 +1,78 @@
+<div class="container mx-auto px-4 py-8">
+  <!-- Seçilmiş Dersler -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold mb-4">Selected Courses</h2>
+    <div class="overflow-x-auto rounded-lg shadow">
+      <table class="min-w-full table-auto border border-gray-200">
+        <thead class="bg-orange-500 text-white text-left text-sm font-medium text-gray-700">
+          <tr>
+            <th class="border border-gray-300 p-2">Course Name</th>
+            <th class="border border-gray-300 p-2">Approval Status</th>
+            <th class="border border-gray-300 p-2">Day</th>
+            <th class="border border-gray-300 p-2">Time</th>
+            <th class="border border-gray-300 p-2">Grade</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm text-gray-800">
+          <tr *ngFor="let course of selectedCourses" class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">{{ course.name }}</td>
+            <td class="border border-gray-300 p-2">
+              <span 
+                [ngClass]="{
+                  'text-green-600 font-semibold': course.approved,
+                  'text-yellow-600 font-medium': !course.approved
+                }">
+                {{ course.approved ? 'Approved' : 'Pending' }}
+              </span>
+            </td>
+            <td class="border border-gray-300 p-2">{{ course.day || '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ course.time || '-' }}</td>
+            <td class="border border-gray-300 p-2">{{ course.note || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Tüm Dersler -->
+<section>
+  <h2 class="text-2xl font-semibold mb-4">All Courses</h2>
+  <div class="mb-4">
+    <label class="block text-sm font-medium mb-1">Choose your course</label>
+    <select [(ngModel)]="selectedClassLevel" (change)="filterCoursesByClass()" class="px-3 py-2 border rounded w-full max-w-xs">
+      <option value="">All courses</option>
+      <option *ngFor="let level of classLevels" [value]="level">
+        {{ level }}. Class
+      </option>
+    </select>
+  </div>
+
+  <!-- Scrollable Course Table Container -->
+  <div class="rounded-lg shadow border border-gray-200 max-h-[400px] overflow-y-auto">
+    <table class="min-w-full table-auto">
+      <thead class="bg-orange-500 text-white text-left text-sm font-medium text-gray-700">
+        <tr>
+          <th class="border border-gray-300 p-2">Course Name</th>
+          <th class="border border-gray-300 p-2">Choose</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-800">
+        <tr *ngFor="let course of filteredCourses" class="hover:bg-gray-50">
+          <td class="border border-gray-300 p-2">{{ course.name }}</td>
+          <td class="border border-gray-300 p-2">
+            <button
+              (click)="selectCourse(course)"
+              [disabled]="course.selected"
+              class="px-4 py-1 rounded-md transition text-white text-sm font-medium
+                     disabled:bg-gray-400 disabled:cursor-not-allowed
+                     bg-blue-600 hover:bg-blue-700">
+              {{ course.selected ? 'Added' : 'Choose' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</div>
+
